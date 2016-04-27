@@ -25,7 +25,7 @@ class UnaryOperations(Expression):
         return str(self.__operation) + "(" + str(self.__argument) + ")"
 
     def __eq__(self, other: Expression):
-        if self.__operation == other.get_operation() and [self.__argument] == list(other.get_args()) \
+        if self.__operation == other.get_operation() and self.get_args() == other.get_args() \
                 and self.__hash__() == other.__hash__():
             return True
         return False
