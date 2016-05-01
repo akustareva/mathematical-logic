@@ -150,10 +150,12 @@ class Checker:
         second = expression.get_second_arg()
         if isinstance(first, UnQuantifier):
             answer, ignored = self.__try_parse_quantifier_axiom(first.get_variable(), first.get_expression(), second)
-            return answer
+            if answer:
+                return True
         if isinstance(second, ExQuantifier):
             answer, ignored = self.__try_parse_quantifier_axiom(second.get_variable(), second.get_expression(), first)
-            return answer
+            if answer:
+                return True
         if isinstance(first, Conjunction):
             if not isinstance(first.get_second_arg(), UnQuantifier):
                 return False
